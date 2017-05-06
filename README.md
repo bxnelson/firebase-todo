@@ -49,14 +49,31 @@ $ npm start
 }
 ```
 ```javascript
-// src/firebase/index.ts
+// src/firebase/index.ts is excluded 
+code should look like:
 
+`
+import { AngularFireModule, AuthMethods } from 'angularfire2';
+
+
+const firebaseConfig = {
 export const firebaseConfig = {
   apiKey: 'your api key',
   authDomain: 'your-project-id.firebaseapp.com',
   databaseURL: 'https://your-project-id.firebaseio.com',
   storageBucket: 'your-project-id.appspot.com'
 };
+};
+
+const firebaseAuthConfig = {
+  method: AuthMethods.Popup,
+  remember: 'default'
+};
+
+
+export const FirebaseModule = AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig);
+`
+
 ```
 
 #### Install firebase-tools:
